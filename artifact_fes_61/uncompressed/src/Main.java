@@ -38,8 +38,8 @@ public class Main {
          }
 
 
-        String path = filename;
-        BufferedReader bf = new BufferedReader(new FileReader(path));
+        
+        BufferedReader bf = new BufferedReader(new FileReader(filename));
 
         String event = null;
         try {
