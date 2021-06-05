@@ -1,0 +1,10 @@
+This directory contains information on how we construct a DFA for the corresponding finite LTL formula.
+All the info files are organized in the following way:
+  1. Firstly it presents the original finite LTL formula.
+  2. Then it presents a infinite LTL formula that preserves satisfiablity with the assumption that all finite traces are now infinite by infinite trailing "t"s.
+  3. It then shows the equivalent formula we feed into Rabinizer. A png file containing the deterministic rabin automaton is also provided.
+  4. Since all traces are encoded with numerical values(explained in the other readme file) and the experiment was done with projected traces, 
+  this file also provides the alphabet that the traces are projected onto and the mapping between events and numbers.
+  5. It also provides the formula to run the compressed algorithm with.
+  6. The last section of each file presents the DFA obtained from the corresponding deterministic rabin automaton.
+     
