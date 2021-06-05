@@ -1,0 +1,16 @@
+original property:
+!G(create)
+property on infinite traces:
+!G(create|t)
+
+property feed into rabinizer:
+!G(a&!b&!c|t)
+
+Alphabet = {44(create),45(explicit_delete),46(implicit_delete)}
+Formula feed into the compressed algorithm:
+!G(44)
+Finite automaton:
+Accepting state = 1
+State 0 : {44} -> 0
+	  {45,46} -> 1
+State 1 : {44,45,46} -> 1

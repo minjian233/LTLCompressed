@@ -1,0 +1,17 @@
+Original property: 
+G(reader_badset->G(reader_badset))
+Transformed property:
+G(reader_badset->G(reader_badset|t))
+Formula feed into rabinizer:
+G((a&!b&!c&!d&!e&!t)->G((a&!b&!c&!d&!e&!t)|(t&!a&!b&!c&!d&!e)))
+
+Alphabet = {15(reader_mark),16(reader_read1),17(reader_readn),18(reader_badset), 19(reader_goodset)} 
+
+Formula feed into the compressed algorithm:
+G(18->G(18))
+Transformed finite automaton:
+Accepting states = 0,1
+State 0 : {15,16,17,19} -> 0
+          {18} -> 1 
+State 1 : {18} -> 1 
+	  

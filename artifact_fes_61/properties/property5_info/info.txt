@@ -1,0 +1,18 @@
+Original property: 
+G(objectInput_create->F(objectInput_close))
+Transformed property:
+G(objectInput_create->F(objectInput_close))
+Formula feed into rabinizer:
+'G((a&!b&!c&!t)->F((b&!a&!c&!t)))'
+
+Alphabet = {32(objectInput_create),33(objectInput_close)} 
+
+Formula feed into the compressed algorithm:
+G(32->F(33))
+
+Transformed finite automaton:
+Accepting states = 0 
+State 0 : {33} -> 0
+          {32} -> 1 
+State 1 : {32} -> 1 
+	  {33} -> 0 

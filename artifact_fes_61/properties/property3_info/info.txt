@@ -1,0 +1,23 @@
+This property is strictly weaker than property2. It is also often used to test the safe usage of iterators. 
+The propose of testing on the property is to see the influence of the size of grammar on the efficiency of the compressed algorithm.
+Original property: 
+-next &  G(next -> !X(next))
+
+Transformed property:
+-next & G((next -> !X(next))
+
+Formula feed into rabinizer:
+!(a&!b&!c&!t) & G(((b&!a&!c&!t) -> !X((a&!b&!c&!t))|(t&!a&!b&!c))) & G(((a&!b&!c&!t) -> !X((a&!b&!c&!t)))|(t&!a&!b&!c))
+
+Alphabet = {34(hasnext_true),35(hasnext_false),36(next)} 
+
+Formula feed into the compressed algorithm:
+!36 &  G(36 -> !X(36))
+
+
+Transformed finite automaton:
+Accepting states = 0 , 1
+State 0 : {35} -> 0
+          {34} -> 1 
+State 1 : {35,36} -> 0 
+	  {34} -> 1 

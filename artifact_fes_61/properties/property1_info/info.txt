@@ -1,0 +1,23 @@
+original property:
+G(collection_create->G(collection_updatesource->!X(collection_next)))
+
+property on infinite traces:
+G((collection_create->G((collection_updatesource->!X(collection_next))|t))|t)
+
+property feed into rabinizer:
+G(((a&!b&!c&!t)->G(((b&!a&!c&!t)->!X((c&!a&!b&!t)))|(t&!a&!b&!c)))|(t&!a&!b&!c))
+
+
+Alphabet = {0(collection_create),1(collection_updatesource),2(collection_next)}
+Formula feed into the compressed algorithm:
+G(0->G(1->!X(2)))
+Finite automaton:
+Accepting state = 0,1,2
+State 0 : {1,2} -> 0 
+	  {0} -> 2
+
+State 1 : {1} -> 1
+	  {0} -> 2
+
+State 2 : {0,2} -> 2
+	  {1} -> 1

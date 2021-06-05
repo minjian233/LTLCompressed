@@ -1,0 +1,19 @@
+Original property: 
+!G(random_close|G(random_manipulate))
+Transformed property:
+!G(random_close|G(random_manipulate|t)|t)
+Formula feed into rabinizer:
+!G((a&!b&!t)|G((b&!a&!t)|(t&!a&!b))|(t&!a&!b))
+
+Alphabet = {30(random_close),31(random_manipulate)} 
+
+Formula feed into the compressed algorithm:
+!G(30|G(31))
+Transformed finite automaton:
+Accepting states = 1
+State 0 : {30} -> 0
+          {31} -> 2
+State 2 : {31} -> 2
+	  {30} -> 1
+State 1 : {30,31} -> 2
+	  

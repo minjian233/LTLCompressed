@@ -1,0 +1,19 @@
+Original property: 
+G(create -> X(explicit_delete | implicit_delete))
+Transformed property:
+G(create -> X(explicit_delete | implicit_delete)）
+
+Formula feed into rabinizer:
+G(((a&!b&!c&!t)->X((b&!a&!c&!t)|(c&!a&!b&!t))))
+
+Alphabet = {44(create),45(explicit_delete),46(implicit_delete)} 
+
+Formula feed into the compressed algorithm:
+G(44->(X(45)|X(46)))
+
+Transformed finite automaton:
+Accepting states = 0 , 1
+State 0 : {45,46} -> 0
+          {44} -> 1 
+State 1 : {45,46} -> 0 
+	  

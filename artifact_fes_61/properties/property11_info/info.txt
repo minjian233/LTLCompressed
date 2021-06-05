@@ -1,0 +1,15 @@
+original property:
+mark & G(mark | reset)
+property on infinite traces:
+mark & G((mark | reset)|t)
+
+property feed into rabinizer:
+(a&!b&!t) & G((a|b)|t)
+
+Alphabet = {13(mark),14(reset)}
+Formula feed into the compressed algorithm:
+13 & G(13|14)
+Finite automaton:
+Accepting state = 0,1
+State 0 : {13} -> 1
+State 1 : {13,14} -> 1

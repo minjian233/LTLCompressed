@@ -1,0 +1,15 @@
+The 10th property in the appendix should be the following:
+original property:
+create & XG(read ∨ safeunread)
+property on infinite traces:
+create & X(G((read ∨ safeunread)|t) & !t)
+property feed into rabinizer:
+(a&!b&!c&!d&!t) & X(G(((b&!a&!c&!d&!t) | (c&!a&!b&!d&!t))|(t&!a&!b&!c&!d)) & !(t&!a&!b&!c&!d))
+Alphabet = {20(pushback_create),21(pushback_read),22(pushback_safeunread),23(pushback_unsafeunread)}
+Formula feed into the compressed algorithm:
+20 & XG(21|22)
+Finite automaton:
+Accepting state = 2
+State 0 : {20} -> 1
+State 1 : {21,22} -> 2
+State 2 : {21,22} -> 2

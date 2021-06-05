@@ -1,0 +1,23 @@
+isomorphic property of property 1, but instrumented on map objects.
+original property:
+G(map_createIter->G(map_updateMap->!X(map_useIter)))
+
+property on infinite traces:
+G((map_createIter->G((map_updateMap->!X(map_useIter))|t))|t)
+
+property feed into rabinizer:
+G(((a&!b&!c&!d&!t)->G(((b&!a&!c&!d&!t)->!X((c&!a&!b&!d&!t)))|(t&!a&!b&!c&!d)))|(t&!a&!b&!c&!d))
+
+Alphabet = {4(map_createIter),5(map_updateMap),6(map_useIter)}
+Formula feed into the compressed algorithm:
+G(4->G(5->!X(6)))
+Finite automaton:
+Accepting state = 0,1,2
+State 0 : {5,6} -> 0 
+	  {4} -> 2
+
+State 1 : {5} -> 1
+	  {4} -> 2
+
+State 2 : {4,6} -> 2
+	  {5} -> 1
