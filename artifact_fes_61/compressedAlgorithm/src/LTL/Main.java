@@ -38,7 +38,6 @@ public class Main {
         Op h = LTLparser(formula);
 
         String projectEvents = projection.equals("")?projection:getProjection(projection);
-        System.out.println(projectEvents);
         //System.out.println(projectEvents);
         Checker checker = new Checker(nestedNext,projectEvents);
         boolean res = checker.modelChecking(h,initialSymbol);
