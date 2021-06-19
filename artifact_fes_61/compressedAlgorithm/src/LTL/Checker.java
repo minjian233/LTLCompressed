@@ -91,12 +91,12 @@ public class Checker {
                 continue;
             }
             else{
-                //symbol read for first timeElapsed in the current state
+                //symbol read for first time in the current state
                 if(set==null){
                     set = new HashSet<String>();
                     map.put(currentSymbol.getName(),set);
                 }
-                //record (currentSymbol, buff)
+                //record (currentSymbol, buff) to the set
                 set.add(buff.toString());
                 if(currentSymbol.isTerminal()){
                     //not in projected evets, skip
@@ -113,6 +113,7 @@ public class Checker {
                     updateBuff(currentSymbol);
                 }
                 else {
+                    //currentSymbol is not terminal then process its children from right to left.
 
                     for(int i = 0; i<currentSymbol.getChildren().size();i++){
 
