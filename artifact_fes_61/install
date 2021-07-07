@@ -1,0 +1,9 @@
+The repo contains two algorithms. The compressed algorithm evaluates linear temporal logic formulas without until on SLP-compressed traces in polynomial time. 
+To compile it simply do:
+> cd compressedAlgorithm/src/LTL
+> javac *java
+The uncompressed algorithm contains 13 automatons for each of the property and are designed to be run on uncompressed traces.
+To compile it simply do:
+> cd compressedAlgorithm/src/LTL
+> javac *java
+More details about the usage can be found in the readme file.
