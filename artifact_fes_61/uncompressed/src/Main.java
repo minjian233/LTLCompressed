@@ -1,8 +1,46 @@
 import java.io.*;
 import java.util.Scanner;
 public class Main {
-
     public static void main(String args[]) throws IOException {
+        if(args[0].equals("-all")){
+            String directory = args[1];
+            File dir = new File(directory);
+            String[] traces = dir.list();
+            StringBuilder sb = new StringBuilder();
+            sb.append("traceName,propertyId,timeEplased\n");
+            for(int i = 0;i<traces.length;i++){
+                for(int j = 0;j<13.;j++){
+                    String[]arguments = new String[2];
+                    arguments[0] = directory+"/"+traces[i];
+                    arguments[1] = String.valueOf(j);
+                    long timeElapsed = check(arguments);
+                    sb.append(traces[i]);
+                    sb.append(',');
+                    sb.append(arguments[1]);
+                    sb.append(',');
+                    sb.append(String.valueOf(timeElapsed));
+                    sb.append('\n');
+                }
+            }
+            try (PrintWriter writer = new PrintWriter(new File(args[2]+"/uncompressedData.csv"))) {
+
+                writer.write(sb.toString());
+
+                System.out.println("output to uncompressedData.csv!");
+
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+        }
+        else{
+            check(args);
+        }
+
+    }
+
+    public static long check(String args[]) throws IOException {
+
         String filename = args[0];
         String index = args[1];
         Property propertychecker=null;
@@ -58,7 +96,7 @@ public class Main {
 
         System.out.println(propertychecker.getVal()+" "+propertychecker.timeElapsed);
 
-
+        return  propertychecker.timeElapsed;
 
         }
 

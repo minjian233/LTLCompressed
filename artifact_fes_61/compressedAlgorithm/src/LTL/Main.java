@@ -8,17 +8,56 @@ public class Main {
     static HashMap<String,Character> events;
     static int numberOfEvents;
     static int nestedNext;
-    public static void main(String[] args) throws IOException {
+    static String[]formulas = {"F(6)","G(0->G(1->!X(2)))","!36 & G(35 -> !X(36)) & G(36 -> !X(36))","!36 & G(36->!X(36))","G(44->(X(45)|X(46)))","G(32->F(33))","G(18->G(18))","!G(30|G(31))","(24|25|26|27)&(XG(28)|XG(29))","G(4->G(5->!X(6)))","20 & XG(21|22)","13 & G(13|14)","!G(44)"} ;
+    static String[] projections={"<4,5,6>","<0,1,2>","<34,35,36>","<34,35,36>","<44,45,46>","<32,33>","<15,16,17,18,19>","<30,31>","<24,25,26,27,28,29>","<4,5,6>","<20,21,22,23>","<13,14>","<44,45,46>"};
+    public  static void main(String[] args)throws IOException{
+        if(args[0].equals("-all")){
+            String directory = args[1];
+            File dir = new File(directory);
+            String[] traces = dir.list();
+            StringBuilder sb = new StringBuilder();
+            sb.append("traceName,propertyId,timeEplased\n");
+            for(int i = 0;i<traces.length;i++){
+                for(int j = 0;j<formulas.length;j++){
+                    String[]arguments = new String[2];
+                    arguments[0] = directory+"/"+traces[i];
+                    arguments[1] = String.valueOf(j);
+                    long timeElapsed = check(arguments);
+                    sb.append(traces[i]);
+                    sb.append(',');
+                    sb.append(arguments[1]);
+                    sb.append(',');
+                    sb.append(String.valueOf(timeElapsed));
+                    sb.append('\n');
+            }
+            }
+            try (PrintWriter writer = new PrintWriter(new File(args[2]+"/compressedData.csv"))) {
+
+                writer.write(sb.toString());
+
+                System.out.println("output to compressedData.csv!");
+
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+        }
+        else{
+            check(args);
+        }
+
+    }
+    public static long check(String[] args) throws IOException {
 
         numberOfEvents=65;
         nestedNext= 0;
         events = new HashMap<>();
-        String[]formulas = {"F(6)","G(0->G(1->!X(2)))","!36 & G(35 -> !X(36)) & G(36 -> !X(36))","!36 & G(36->!X(36))","G(44->(X(45)|X(46)))","G(32->F(33))","G(18->G(18))","!G(30|G(31))","(24|25|26|27)&(XG(28)|XG(29))","G(4->G(5->!X(6)))","20 & XG(21|22)","13 & G(13|14)","!G(44)"} ;
-        String[] projections={"<4,5,6>","<0,1,2>","<34,35,36>","<34,35,36>","<44,45,46>","<32,33>","<15,16,17,18,19>","<30,31>","<24,25,26,27,28,29>","<4,5,6>","<20,21,22,23>","<13,14>","<44,45,46>"};
+
         if(args.length<2){
             System.out.println("unable to parse command");
             System.exit(1);
         }
+
         String filename = args[0];
         String formula = "";
         String projection = "";
@@ -46,6 +85,8 @@ public class Main {
             res = false;
         }
         System.out.println(res+" "+checker.timeElapsed);
+
+        return checker.timeElapsed;
 /**
 
 **/
@@ -318,6 +359,19 @@ public class Main {
             }
         }
         return projection.toString();
+
+
+    }
+    public static void runall(String directory){
+        String[]formulas = {"F(6)","G(0->G(1->!X(2)))","!36 & G(35 -> !X(36)) & G(36 -> !X(36))","!36 & G(36->!X(36))","G(44->(X(45)|X(46)))","G(32->F(33))","G(18->G(18))","!G(30|G(31))","(24|25|26|27)&(XG(28)|XG(29))","G(4->G(5->!X(6)))","20 & XG(21|22)","13 & G(13|14)","!G(44)"} ;
+        String[] projections={"<4,5,6>","<0,1,2>","<34,35,36>","<34,35,36>","<44,45,46>","<32,33>","<15,16,17,18,19>","<30,31>","<24,25,26,27,28,29>","<4,5,6>","<20,21,22,23>","<13,14>","<44,45,46>"};
+        File dir = new File(directory);
+        String[] traces = dir.list();
+        List<String[]> dataLines = new ArrayList<>();
+
+
+
+
 
 
     }
